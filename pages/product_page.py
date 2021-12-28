@@ -2,6 +2,7 @@ from .base_page import BasePage
 from .locators import ProductPageLocators
 from selenium.webdriver.common.by import By
 
+
 class ProductPage(BasePage):
     def should_be_product_page(self):
         self.should_be_product_url()
@@ -39,3 +40,11 @@ class ProductPage(BasePage):
         # print(f"basket_total_after_adding = '{self.browser.find_element(*ProductPageLocators.PRODUCT_COST_TO_CHECK).text}'")
         assert product_cost == self.browser.find_element(*ProductPageLocators.PRODUCT_COST_TO_CHECK).text, \
             "Basket total amount is not correct"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.PRODUCT_NAME_TO_CHECK), \
+            "Success message is presented, but should not be"
+
+    def should_disappear_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message should disappear, but it did not"
