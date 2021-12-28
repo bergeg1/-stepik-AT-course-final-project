@@ -78,5 +78,4 @@ class BasePage:
             if attr_value is not None:
                 if attr_value.find('basket') > 0:
                     locator_value = '[href="/' + attr_value.split('/')[-3] + "/" + attr_value.split('/')[-2] + '/"]'
-                    # print(f"locator_value = {locator_value}")
                     return locator_value

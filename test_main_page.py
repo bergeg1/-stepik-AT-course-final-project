@@ -1,8 +1,7 @@
 from .pages.main_page import MainPage
 from .pages.login_page import LoginPage
 from .pages.basket_page import BasketPage
-import pytest   # временно
-import time   # временно
+import pytest
 
 
 @pytest.mark.login_guest
@@ -26,10 +25,7 @@ def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     link = "http://selenium1py.pythonanywhere.com"
     page = MainPage(browser, link)
     page.open()
-    time.sleep(1)
     page.go_to_basket_page()
-    time.sleep(1)
     basket_page = BasketPage(browser, browser.current_url)
     basket_page.should_not_be_items_message()
     basket_page.should_be_empty_basket_message()
-
